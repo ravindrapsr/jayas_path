@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jayas Pathology — Precision Diagnostics. Trusted Results.</title>
+<meta name="description" content="Jayas Pathology in Surir, UP — advanced blood tests, home sample collection, NFC payments. Trusted diagnostic lab by Rajesh Kumar (Ranu Thakur)." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --primary:#0A1F44;
+  --bg-deep:#000814;
+  --accent:#00C9FF;
+  --accent-2:#39FF14;
+  --soft:#F0F8FF;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(0,201,255,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background: radial-gradient(ellipse at top, #0A1F44 0%, #000814 70%);
+  color:var(--soft);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+h1,h2,h3,h4{font-family:'Orbitron',sans-serif;letter-spacing:1px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+section{padding:100px 8%;position:relative;z-index:2}
+
+/* === NAV === */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 6%;
+  background:rgba(10,31,68,0.55);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,201,255,0.15);
+}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Orbitron';font-weight:700;font-size:1.2rem}
+.logo i{color:var(--accent);font-size:1.5rem;filter:drop-shadow(0 0 6px var(--accent))}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.95rem;font-weight:500;position:relative;transition:.3s;color:#cfe9ff}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:.3s;box-shadow:0 0 8px var(--accent)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.phone-num{color:#cfe9ff;font-size:.9rem}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:50px;font-weight:600;font-size:.9rem;
+  cursor:pointer;border:none;transition:.3s;font-family:'Poppins'
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),#0099cc);color:#001018;
+  box-shadow:0 0 20px rgba(0,201,255,.4)
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,201,255,.7)}
+.btn-outline{
+  background:transparent;color:var(--accent);border:2px solid var(--accent);
+}
+.btn-outline:hover{background:var(--accent);color:#001018;box-shadow:0 0 25px var(--accent)}
+.menu-toggle{display:none;font-size:1.4rem;cursor:pointer;color:var(--accent)}
+
+/* === HERO === */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;padding-top:120px
+}
+.hero-content{position:relative;z-index:3;max-width:900px}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,5rem);font-weight:900;line-height:1.1;
+  background:linear-gradient(135deg,#fff 30%,var(--accent) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse{
+  0%,100%{filter:drop-shadow(0 0 8px rgba(0,201,255,.4))}
+  50%{filter:drop-shadow(0 0 24px rgba(0,201,255,.9))}
+}
+.hero .tagline{margin:24px 0 36px;font-size:1.15rem;color:#a8c9e6;font-weight:300}
+.hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+/* DNA helix */
+.dna-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;opacity:.45;pointer-events:none}
+.dna{
+  width:300px;height:500px;position:relative;
+  transform-style:preserve-3d;animation:rotateDNA 14s linear infinite;
+}
+@keyframes rotateDNA{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
+.dna .rung{
+  position:absolute;left:50%;width:240px;height:6px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent));
+  border-radius:3px;transform-origin:center;
+  box-shadow:0 0 12px var(--accent);
+  transform:translateX(-50%) rotateY(0);
+}
+
+/* Floating particles */
+.particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;width:6px;height:6px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 12px var(--accent);
+  animation:drift linear infinite;opacity:.7
+}
+@keyframes drift{
+  0%{transform:translateY(110vh) translateX(0)}
+  100%{transform:translateY(-10vh) translateX(40px)}
+}
+
+/* Floating medical icons */
+.float-icons{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.float-icons i{
+  position:absolute;color:rgba(0,201,255,.18);font-size:2.4rem;
+  animation:floatUp 6s ease-in-out infinite;
+}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+
+/* === SECTION HEADERS === */
+.sec-head{text-align:center;margin-bottom:60px}
+.sec-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff}
+.sec-head h2 span{color:var(--accent);text-shadow:0 0 14px rgba(0,201,255,.6)}
+.sec-head p{color:#9bb6d3;margin-top:12px;max-width:600px;margin-inline:auto}
+
+/* === GLASS CARDS === */
+.grid{display:grid;gap:28px}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.glass-card{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:18px;padding:32px 26px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .25s ease, box-shadow .3s, border-color .3s;
+  transform-style:preserve-3d;will-change:transform;
+  position:relative;overflow:hidden
+}
+.glass-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 30px rgba(0,201,255,.45), inset 0 0 20px rgba(0,201,255,.08);
+}
+.glass-card .icon{
+  width:60px;height:60px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,201,255,.2),rgba(57,255,20,.1));
+  color:var(--accent);font-size:1.7rem;margin-bottom:18px;
+  box-shadow:0 0 14px rgba(0,201,255,.3)
+}
+.glass-card h3{font-size:1.15rem;color:#fff;margin-bottom:10px;font-family:'Orbitron'}
+.glass-card p{color:#a8c2dd;font-size:.92rem;line-height:1.6}
+
+/* === SERVICES FLIP === */
+.flip-card{perspective:1200px;height:280px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .8s;transform-style:preserve-3d}
+.flip-card:hover .flip-inner{transform:rotateY(180deg)}
+.flip-face{
+  position:absolute;inset:0;border-radius:18px;padding:30px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(12px);
+}
+.flip-front i{font-size:3rem;color:var(--accent);margin-bottom:18px;filter:drop-shadow(0 0 12px var(--accent))}
+.flip-front h3{color:#fff;font-size:1.1rem}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(135deg,rgba(0,201,255,.15),rgba(10,31,68,.85));border-color:var(--accent)}
+.flip-back p{color:#dbeeff;font-size:.9rem;margin-bottom:14px;line-height:1.5}
+
+/* === ABOUT === */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-text h2{font-size:2.2rem;margin-bottom:18px;color:#fff}
+.about-text h2 span{color:var(--accent)}
+.about-text p{color:#a8c2dd;line-height:1.8;margin-bottom:18px}
+.trust-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:50px;
+  background:rgba(57,255,20,.08);color:var(--accent-2);
+  border:1px solid rgba(57,255,20,.4);font-size:.85rem;font-weight:600;
+  box-shadow:0 0 14px rgba(57,255,20,.2)
+}
+.about-visual{display:flex;justify-content:center}
+.glow-circle{
+  width:340px;height:340px;border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(0,201,255,.4), transparent 60%),
+    linear-gradient(135deg,#0A1F44,#001a33);
+  display:grid;place-items:center;
+  border:2px solid var(--accent);
+  box-shadow:0 0 60px rgba(0,201,255,.5), inset 0 0 40px rgba(0,201,255,.2);
+  animation:floatY 5s ease-in-out infinite
+}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.glow-circle i{font-size:8rem;color:var(--accent);filter:drop-shadow(0 0 20px var(--accent))}
+
+/* === STATS === */
+.stats{
+  background:
+    linear-gradient(rgba(10,31,68,.85),rgba(0,8,20,.95)),
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,201,255,.08) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(0,201,255,.08) 40px);
+  border-top:1px solid rgba(0,201,255,.2);
+  border-bottom:1px solid rgba(0,201,255,.2);
+}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center}
+.stat-item .num{
+  font-family:'Orbitron';font-size:3rem;font-weight:900;
+  color:var(--accent);text-shadow:0 0 20px rgba(0,201,255,.7)
+}
+.stat-item .label{color:#a8c2dd;margin-top:8px;font-size:.95rem}
+
+/* === CONTACT === */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:22px}
+.info-item{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:20px;background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:14px;backdrop-filter:blur(10px);transition:.3s
+}
+.info-item:hover{border-color:var(--accent);box-shadow:0 0 22px rgba(0,201,255,.3)}
+.info-item i{
+  font-size:1.3rem;color:var(--accent);
+  width:46px;height:46px;display:grid;place-items:center;
+  background:rgba(0,201,255,.1);border-radius:12px;
+  box-shadow:0 0 12px rgba(0,201,255,.4);flex-shrink:0
+}
+.info-item h4{color:#fff;font-size:.95rem;margin-bottom:4px;font-family:'Poppins';font-weight:600}
+.info-item p,.info-item a{color:#a8c2dd;font-size:.9rem;line-height:1.5}
+.info-item a:hover{color:var(--accent)}
+.map-wrap{
+  border-radius:18px;overflow:hidden;border:2px solid var(--accent);
+  box-shadow:0 0 30px rgba(0,201,255,.4);min-height:420px
+}
+.map-wrap iframe{width:100%;height:100%;border:0;min-height:420px;filter:invert(.9) hue-rotate(180deg) saturate(.6)}
+
+/* === FOOTER === */
+footer{
+  background:
+    linear-gradient(rgba(0,8,20,.95),rgba(0,8,20,.95)),
+    repeating-linear-gradient(45deg,rgba(0,201,255,.04) 0 1px,transparent 1px 20px);
+  padding:60px 8% 30px;border-top:1px solid rgba(0,201,255,.2);position:relative;z-index:2
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-grid h4{color:var(--accent);margin-bottom:16px;font-family:'Orbitron';font-size:1rem}
+.footer-grid p,.footer-grid li,.footer-grid a{color:#9bb6d3;font-size:.9rem;line-height:1.9;list-style:none}
+.footer-grid a:hover{color:var(--accent)}
+.socials{display:flex;gap:14px;margin-top:14px}
+.socials a{
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(0,201,255,.1);color:var(--accent);
+  border:1px solid var(--glass-border);transition:.3s
+}
+.socials a:hover{background:var(--accent);color:#001018;box-shadow:0 0 18px var(--accent);transform:translateY(-3px)}
+.copyright{text-align:center;padding-top:24px;border-top:1px solid rgba(0,201,255,.15);color:#7a96b3;font-size:.85rem}
+
+/* === WHATSAPP FLOAT === */
+.wa-float{
+  position:fixed;right:24px;bottom:24px;z-index:99;
+  width:60px;height:60px;border-radius:50%;
+  background:#25D366;color:#fff;display:grid;place-items:center;
+  font-size:1.8rem;box-shadow:0 0 0 0 rgba(37,211,102,.7);
+  animation:waPulse 2s infinite
+}
+@keyframes waPulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
+  70%{box-shadow:0 0 0 20px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+
+/* === SCROLL REVEAL === */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* === RESPONSIVE === */
+@media (max-width:900px){
+  .nav-links,.phone-num{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    background:rgba(10,31,68,.97);padding:24px;gap:18px;backdrop-filter:blur(12px)
+  }
+  .about-wrap,.contact-wrap{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .glow-circle{width:260px;height:260px}
+  .glow-circle i{font-size:6rem}
+  section{padding:70px 6%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="logo"><i class="fa-solid fa-dna"></i> Jayas Pathology</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <span class="phone-num"><i class="fa-solid fa-phone" style="color:var(--accent)"></i> +91 63989 42149</span>
+    <a href="tel:+916398942149" class="btn btn-primary"><i class="fa-solid fa-phone-volume"></i> Call Now</a>
+    <i class="fa-solid fa-bars menu-toggle" id="menuToggle"></i>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="dna-wrap"><div class="dna" id="dna"></div></div>
+  <div class="particles" id="particles"></div>
+  <div class="float-icons">
+    <i class="fa-solid fa-microscope" style="top:18%;left:8%"></i>
+    <i class="fa-solid fa-vial" style="top:30%;right:10%;animation-delay:1s"></i>
+    <i class="fa-solid fa-heart-pulse" style="bottom:20%;left:12%;animation-delay:2s"></i>
+    <i class="fa-solid fa-stethoscope" style="bottom:28%;right:14%;animation-delay:1.5s"></i>
+    <i class="fa-solid fa-syringe" style="top:55%;left:5%;animation-delay:.6s"></i>
+  </div>
+  <div class="hero-content">
+    <h1>Jayas Pathology</h1>
+    <p class="tagline">Precision Diagnostics. Trusted Results. Delivered to You.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-flask-vial"></i> Book a Test Today</a>
+      <a href="#services" class="btn btn-outline"><i class="fa-solid fa-list-check"></i> View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="sec-head reveal">
+    <h2>Why Choose <span>Jayas Pathology</span></h2>
+    <p>A diagnostic experience built on accuracy, accessibility and patient comfort.</p>
+  </div>
+  <div class="grid grid-4">
+    <div class="glass-card tilt reveal">
+      <div class="icon"><i class="fa-solid fa-microscope"></i></div>
+      <h3>Advanced Equipment</h3>
+      <p>State-of-the-art diagnostic machines ensuring accurate and quick results.</p>
+    </div>
+    <div class="glass-card tilt reveal">
+      <div class="icon"><i class="fa-solid fa-truck-medical"></i></div>
+      <h3>Home Sample Delivery</h3>
+      <p>Our trained phlebotomists collect samples from the comfort of your home.</p>
+    </div>
+    <div class="glass-card tilt reveal">
+      <div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+      <h3>NFC Mobile Payments</h3>
+      <p>Pay easily with NFC, UPI, or cards — fast, secure and contactless.</p>
+    </div>
+    <div class="glass-card tilt reveal">
+      <div class="icon"><i class="fa-solid fa-wheelchair"></i></div>
+      <h3>Wheelchair Accessible</h3>
+      <p>Dedicated wheelchair-accessible parking and entrance for all patients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-head reveal">
+    <h2>Our <span>Services</span></h2>
+    <p>Comprehensive pathology tests with rapid, reliable reporting.</p>
+  </div>
+  <div class="grid grid-3">
+    <div class="flip-card reveal"><div class="flip-inner">
+      <div class="flip-face flip-front"><i class="fa-solid fa-droplet"></i><h3>Blood Test</h3></div>
+      <div class="flip-face flip-back"><p>Complete profiling including lipid, liver and kidney function tests with same-day reports.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
+    </div></div>
+    <div class="flip-card reveal"><div class="flip-inner">
+      <div class="flip-face flip-front"><i class="fa-solid fa-vial"></i><h3>Urine Analysis</h3></div>
+      <div class="flip-face flip-back"><p>Detailed urine examination to detect infections, kidney issues and metabolic disorders.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
+    </div></div>
+    <div class="flip-card reveal"><div class="flip-inner">
+      <div class="flip-face flip-front"><i class="fa-solid fa-cubes-stacked"></i><h3>Sugar Test</h3></div>
+      <div class="flip-face flip-back"><p>Fasting, PP and HbA1c sugar tests to monitor diabetes accurately.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
+    </div></div>
+    <div class="flip-card reveal"><div class="flip-inner">
+      <div class="flip-face flip-front"><i class="fa-solid fa-disease"></i><h3>Complete Blood Count</h3></div>
+      <div class="flip-face flip-back"><p>CBC analysis to evaluate overall health and detect a wide range of disorders.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
+    </div></div>
+    <div class="flip-card reveal"><div class="flip-inner">
+      <div class="flip-face flip-front"><i class="fa-solid fa-shield-virus"></i><h3>Thyroid Test</h3></div>
+      <div class="flip-face flip-back"><p>T3, T4 and TSH tests for accurate thyroid function assessment.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
+    </div></div>
+    <div class="flip-card reveal"><div class="flip-inner">
+      <div class="flip-face flip-front"><i class="fa-solid fa-virus-covid"></i><h3>COVID / Viral Tests</h3></div>
+      <div class="flip-face flip-back"><p>Reliable RT-PCR, antigen and viral panel tests with quick turnaround.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-text reveal">
+      <h2>About <span>Jayas Pathology</span></h2>
+      <p>Founded by <strong>Rajesh Kumar (Ranu Thakur)</strong>, Jayas Pathology has been the trusted diagnostic partner of families in Surir and nearby villages. We combine advanced lab technology with a warm, helpful team to deliver results you can rely on.</p>
+      <p>Our staff is known across the community for being professional, kind and patient-first. From routine blood work to specialized panels — every report is handled with precision and care.</p>
+      <div class="trust-badges">
+        <span class="badge"><i class="fa-solid fa-circle-check"></i> Certified</span>
+        <span class="badge"><i class="fa-solid fa-shield-halved"></i> Reliable</span>
+        <span class="badge"><i class="fa-solid fa-hand-holding-heart"></i> Affordable</span>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="glow-circle"><i class="fa-solid fa-user-doctor"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal"><div class="num" data-target="500">0</div><div class="label">+ Tests Done</div></div>
+    <div class="stat-item reveal"><div class="num" data-target="1000">0</div><div class="label">+ Happy Patients</div></div>
+    <div class="stat-item reveal"><div class="num" data-target="100">0</div><div class="label">% Accuracy</div></div>
+    <div class="stat-item reveal"><div class="num" data-target="5">0</div><div class="label">+ Years of Trust</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head reveal">
+    <h2>Visit or <span>Contact Us</span></h2>
+    <p>We're here to help — drop by, call, or book a home collection.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="info-item reveal"><i class="fa-solid fa-location-dot"></i>
+        <div><h4>Address</h4><p>04 Main Bajar Surir, Vill. Karahari, Uttar Pradesh 281202, India</p></div>
+      </div>
+      <div class="info-item reveal"><i class="fa-solid fa-phone"></i>
+        <div><h4>Phone</h4><a href="tel:+916398942149">+91 63989 42149</a></div>
+      </div>
+      <div class="info-item reveal"><i class="fa-solid fa-clock"></i>
+        <div><h4>Working Hours</h4><p>Mon – Sun: 7:00 AM – 9:00 PM</p></div>
+      </div>
+      <div class="info-item reveal"><i class="fa-solid fa-credit-card"></i>
+        <div><h4>Payments</h4><p>Cash, UPI, Cards, NFC Mobile Payments</p></div>
+      </div>
+      <a href="https://maps.app.goo.gl/c2abeFuUuKbC7svh9" target="_blank" rel="noopener" class="btn btn-primary reveal" style="align-self:flex-start"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe src="https://www.google.com/maps?q=Surir+Karahari+Uttar+Pradesh+281202&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:14px"><i class="fa-solid fa-dna"></i> Jayas Pathology</div>
+      <p>Precision diagnostics with a human touch — serving Surir and surrounding regions with reliable, affordable pathology services.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://wa.me/916398942149" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><i class="fa-solid fa-phone" style="color:var(--accent)"></i> +91 63989 42149</p>
+      <p><i class="fa-solid fa-location-dot" style="color:var(--accent)"></i> Surir, Karahari, UP 281202</p>
+    </div>
+  </div>
+  <div class="copyright">© 2025 Jayas Pathology. All Rights Reserved. | Owner: Rajesh Kumar (Ranu Thakur)</div>
+</footer>
+
+<a href="https://wa.me/916398942149" class="wa-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script>
+/* DNA helix build */
+const dna = document.getElementById('dna');
+const rungs = 20;
+for(let i=0;i<rungs;i++){
+  const r = document.createElement('div');
+  r.className='rung';
+  r.style.top = (i*(500/rungs))+'px';
+  r.style.transform = `translateX(-50%) rotateY(${i*36}deg)`;
+  dna.appendChild(r);
+}
+
+/* Particles */
+const pBox = document.getElementById('particles');
+for(let i=0;i<35;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=(8+Math.random()*10)+'s';
+  p.style.animationDelay=(-Math.random()*10)+'s';
+  const s=3+Math.random()*5;
+  p.style.width=s+'px';p.style.height=s+'px';
+  p.style.opacity=.3+Math.random()*.6;
+  pBox.appendChild(p);
+}
+
+/* Mobile menu */
+document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.remove('open');
+}));
+
+/* 3D Tilt */
+document.querySelectorAll('.tilt').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(900px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateZ(6px)`;
+  });
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+
+/* Scroll reveal */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'), i*60);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Counters */
+const counters=document.querySelectorAll('.num');
+const cio=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      const el=en.target;
+      const target=+el.dataset.target;
+      const dur=1800; const start=performance.now();
+      const tick=(t)=>{
+        const p=Math.min((t-start)/dur,1);
+        el.textContent=Math.floor(p*target);
+        if(p<1)requestAnimationFrame(tick); else el.textContent=target;
+      };
+      requestAnimationFrame(tick);
+      cio.unobserve(el);
+    }
+  });
+},{threshold:.5});
+counters.forEach(c=>cio.observe(c));
+</script>
+</body>
+</html>
