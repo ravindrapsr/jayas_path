@@ -1,563 +1,1082 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jayas Pathology — Precision Diagnostics. Trusted Results.</title>
-<meta name="description" content="Jayas Pathology in Surir, UP — advanced blood tests, home sample collection, NFC payments. Trusted diagnostic lab by Rajesh Kumar (Ranu Thakur)." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-:root{
-  --primary:#0A1F44;
-  --bg-deep:#000814;
-  --accent:#00C9FF;
-  --accent-2:#39FF14;
-  --soft:#F0F8FF;
-  --glass: rgba(255,255,255,0.06);
-  --glass-border: rgba(0,201,255,0.25);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Poppins',sans-serif;
-  background: radial-gradient(ellipse at top, #0A1F44 0%, #000814 70%);
-  color:var(--soft);
-  overflow-x:hidden;
-  min-height:100vh;
-}
-h1,h2,h3,h4{font-family:'Orbitron',sans-serif;letter-spacing:1px}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-section{padding:100px 8%;position:relative;z-index:2}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jayas Pathology | Precision Diagnostics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* === NAV === */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 6%;
-  background:rgba(10,31,68,0.55);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(0,201,255,0.15);
-}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Orbitron';font-weight:700;font-size:1.2rem}
-.logo i{color:var(--accent);font-size:1.5rem;filter:drop-shadow(0 0 6px var(--accent))}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:.95rem;font-weight:500;position:relative;transition:.3s;color:#cfe9ff}
-.nav-links a:hover{color:var(--accent)}
-.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:.3s;box-shadow:0 0 8px var(--accent)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{display:flex;align-items:center;gap:14px}
-.phone-num{color:#cfe9ff;font-size:.9rem}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 22px;border-radius:50px;font-weight:600;font-size:.9rem;
-  cursor:pointer;border:none;transition:.3s;font-family:'Poppins'
-}
-.btn-primary{
-  background:linear-gradient(135deg,var(--accent),#0099cc);color:#001018;
-  box-shadow:0 0 20px rgba(0,201,255,.4)
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,201,255,.7)}
-.btn-outline{
-  background:transparent;color:var(--accent);border:2px solid var(--accent);
-}
-.btn-outline:hover{background:var(--accent);color:#001018;box-shadow:0 0 25px var(--accent)}
-.menu-toggle{display:none;font-size:1.4rem;cursor:pointer;color:var(--accent)}
+    :root {
+      --primary: #0A1F44;
+      --cyan: #00C9FF;
+      --teal: #00f5c4;
+      --neon: #39FF14;
+      --white: #F0F8FF;
+      --dark: #000814;
+      --glass: rgba(0, 201, 255, 0.07);
+      --border: rgba(0, 201, 255, 0.2);
+    }
 
-/* === HERO === */
-.hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;position:relative;overflow:hidden;padding-top:120px
-}
-.hero-content{position:relative;z-index:3;max-width:900px}
-.hero h1{
-  font-size:clamp(2.4rem,6vw,5rem);font-weight:900;line-height:1.1;
-  background:linear-gradient(135deg,#fff 30%,var(--accent) 70%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:glowPulse 3s ease-in-out infinite;
-}
-@keyframes glowPulse{
-  0%,100%{filter:drop-shadow(0 0 8px rgba(0,201,255,.4))}
-  50%{filter:drop-shadow(0 0 24px rgba(0,201,255,.9))}
-}
-.hero .tagline{margin:24px 0 36px;font-size:1.15rem;color:#a8c9e6;font-weight:300}
-.hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+    html { scroll-behavior: smooth; }
 
-/* DNA helix */
-.dna-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;opacity:.45;pointer-events:none}
-.dna{
-  width:300px;height:500px;position:relative;
-  transform-style:preserve-3d;animation:rotateDNA 14s linear infinite;
-}
-@keyframes rotateDNA{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
-.dna .rung{
-  position:absolute;left:50%;width:240px;height:6px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent));
-  border-radius:3px;transform-origin:center;
-  box-shadow:0 0 12px var(--accent);
-  transform:translateX(-50%) rotateY(0);
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
 
-/* Floating particles */
-.particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.particle{
-  position:absolute;width:6px;height:6px;border-radius:50%;
-  background:var(--accent);box-shadow:0 0 12px var(--accent);
-  animation:drift linear infinite;opacity:.7
-}
-@keyframes drift{
-  0%{transform:translateY(110vh) translateX(0)}
-  100%{transform:translateY(-10vh) translateX(40px)}
-}
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
 
-/* Floating medical icons */
-.float-icons{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-.float-icons i{
-  position:absolute;color:rgba(0,201,255,.18);font-size:2.4rem;
-  animation:floatUp 6s ease-in-out infinite;
-}
-@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+    /* ══════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(0, 8, 20, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
 
-/* === SECTION HEADERS === */
-.sec-head{text-align:center;margin-bottom:60px}
-.sec-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff}
-.sec-head h2 span{color:var(--accent);text-shadow:0 0 14px rgba(0,201,255,.6)}
-.sec-head p{color:#9bb6d3;margin-top:12px;max-width:600px;margin-inline:auto}
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--cyan);
+      text-shadow: 0 0 12px var(--cyan);
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
 
-/* === GLASS CARDS === */
-.grid{display:grid;gap:28px}
-.grid-4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.glass-card{
-  background:var(--glass);
-  border:1px solid var(--glass-border);
-  border-radius:18px;padding:32px 26px;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  transition:transform .25s ease, box-shadow .3s, border-color .3s;
-  transform-style:preserve-3d;will-change:transform;
-  position:relative;overflow:hidden
-}
-.glass-card:hover{
-  border-color:var(--accent);
-  box-shadow:0 0 30px rgba(0,201,255,.45), inset 0 0 20px rgba(0,201,255,.08);
-}
-.glass-card .icon{
-  width:60px;height:60px;border-radius:14px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(0,201,255,.2),rgba(57,255,20,.1));
-  color:var(--accent);font-size:1.7rem;margin-bottom:18px;
-  box-shadow:0 0 14px rgba(0,201,255,.3)
-}
-.glass-card h3{font-size:1.15rem;color:#fff;margin-bottom:10px;font-family:'Orbitron'}
-.glass-card p{color:#a8c2dd;font-size:.92rem;line-height:1.6}
+    .nav-logo i { font-size: 1.5rem; color: var(--teal); }
 
-/* === SERVICES FLIP === */
-.flip-card{perspective:1200px;height:280px}
-.flip-inner{position:relative;width:100%;height:100%;transition:transform .8s;transform-style:preserve-3d}
-.flip-card:hover .flip-inner{transform:rotateY(180deg)}
-.flip-face{
-  position:absolute;inset:0;border-radius:18px;padding:30px;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  background:var(--glass);border:1px solid var(--glass-border);
-  backdrop-filter:blur(12px);
-}
-.flip-front i{font-size:3rem;color:var(--accent);margin-bottom:18px;filter:drop-shadow(0 0 12px var(--accent))}
-.flip-front h3{color:#fff;font-size:1.1rem}
-.flip-back{transform:rotateY(180deg);background:linear-gradient(135deg,rgba(0,201,255,.15),rgba(10,31,68,.85));border-color:var(--accent)}
-.flip-back p{color:#dbeeff;font-size:.9rem;margin-bottom:14px;line-height:1.5}
+    .nav-links { display: flex; gap: 32px; list-style: none; }
 
-/* === ABOUT === */
-.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-text h2{font-size:2.2rem;margin-bottom:18px;color:#fff}
-.about-text h2 span{color:var(--accent)}
-.about-text p{color:#a8c2dd;line-height:1.8;margin-bottom:18px}
-.trust-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
-.badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 18px;border-radius:50px;
-  background:rgba(57,255,20,.08);color:var(--accent-2);
-  border:1px solid rgba(57,255,20,.4);font-size:.85rem;font-weight:600;
-  box-shadow:0 0 14px rgba(57,255,20,.2)
-}
-.about-visual{display:flex;justify-content:center}
-.glow-circle{
-  width:340px;height:340px;border-radius:50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(0,201,255,.4), transparent 60%),
-    linear-gradient(135deg,#0A1F44,#001a33);
-  display:grid;place-items:center;
-  border:2px solid var(--accent);
-  box-shadow:0 0 60px rgba(0,201,255,.5), inset 0 0 40px rgba(0,201,255,.2);
-  animation:floatY 5s ease-in-out infinite
-}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.glow-circle i{font-size:8rem;color:var(--accent);filter:drop-shadow(0 0 20px var(--accent))}
+    .nav-links a {
+      color: var(--white); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
 
-/* === STATS === */
-.stats{
-  background:
-    linear-gradient(rgba(10,31,68,.85),rgba(0,8,20,.95)),
-    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,201,255,.08) 40px),
-    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(0,201,255,.08) 40px);
-  border-top:1px solid rgba(0,201,255,.2);
-  border-bottom:1px solid rgba(0,201,255,.2);
-}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center}
-.stat-item .num{
-  font-family:'Orbitron';font-size:3rem;font-weight:900;
-  color:var(--accent);text-shadow:0 0 20px rgba(0,201,255,.7)
-}
-.stat-item .label{color:#a8c2dd;margin-top:8px;font-size:.95rem}
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--cyan);
+      transition: width 0.3s;
+    }
 
-/* === CONTACT === */
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.contact-info{display:flex;flex-direction:column;gap:22px}
-.info-item{
-  display:flex;gap:18px;align-items:flex-start;
-  padding:20px;background:var(--glass);border:1px solid var(--glass-border);
-  border-radius:14px;backdrop-filter:blur(10px);transition:.3s
-}
-.info-item:hover{border-color:var(--accent);box-shadow:0 0 22px rgba(0,201,255,.3)}
-.info-item i{
-  font-size:1.3rem;color:var(--accent);
-  width:46px;height:46px;display:grid;place-items:center;
-  background:rgba(0,201,255,.1);border-radius:12px;
-  box-shadow:0 0 12px rgba(0,201,255,.4);flex-shrink:0
-}
-.info-item h4{color:#fff;font-size:.95rem;margin-bottom:4px;font-family:'Poppins';font-weight:600}
-.info-item p,.info-item a{color:#a8c2dd;font-size:.9rem;line-height:1.5}
-.info-item a:hover{color:var(--accent)}
-.map-wrap{
-  border-radius:18px;overflow:hidden;border:2px solid var(--accent);
-  box-shadow:0 0 30px rgba(0,201,255,.4);min-height:420px
-}
-.map-wrap iframe{width:100%;height:100%;border:0;min-height:420px;filter:invert(.9) hue-rotate(180deg) saturate(.6)}
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a:hover::after { width: 100%; }
 
-/* === FOOTER === */
-footer{
-  background:
-    linear-gradient(rgba(0,8,20,.95),rgba(0,8,20,.95)),
-    repeating-linear-gradient(45deg,rgba(0,201,255,.04) 0 1px,transparent 1px 20px);
-  padding:60px 8% 30px;border-top:1px solid rgba(0,201,255,.2);position:relative;z-index:2
-}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-grid h4{color:var(--accent);margin-bottom:16px;font-family:'Orbitron';font-size:1rem}
-.footer-grid p,.footer-grid li,.footer-grid a{color:#9bb6d3;font-size:.9rem;line-height:1.9;list-style:none}
-.footer-grid a:hover{color:var(--accent)}
-.socials{display:flex;gap:14px;margin-top:14px}
-.socials a{
-  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(0,201,255,.1);color:var(--accent);
-  border:1px solid var(--glass-border);transition:.3s
-}
-.socials a:hover{background:var(--accent);color:#001018;box-shadow:0 0 18px var(--accent);transform:translateY(-3px)}
-.copyright{text-align:center;padding-top:24px;border-top:1px solid rgba(0,201,255,.15);color:#7a96b3;font-size:.85rem}
+    .nav-cta {
+      display: flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--teal));
+      color: var(--dark) !important;
+      padding: 8px 20px; border-radius: 30px;
+      font-weight: 700; font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 0 18px rgba(0,201,255,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-/* === WHATSAPP FLOAT === */
-.wa-float{
-  position:fixed;right:24px;bottom:24px;z-index:99;
-  width:60px;height:60px;border-radius:50%;
-  background:#25D366;color:#fff;display:grid;place-items:center;
-  font-size:1.8rem;box-shadow:0 0 0 0 rgba(37,211,102,.7);
-  animation:waPulse 2s infinite
-}
-@keyframes waPulse{
-  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
-  70%{box-shadow:0 0 0 20px rgba(37,211,102,0)}
-  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
-}
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0,201,255,0.7);
+    }
 
-/* === SCROLL REVEAL === */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 60% 50%, #001d3d 0%, var(--dark) 70%);
+      padding: 100px 40px 60px;
+    }
 
-/* === RESPONSIVE === */
-@media (max-width:900px){
-  .nav-links,.phone-num{display:none}
-  .menu-toggle{display:block}
-  .nav-links.open{
-    display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
-    background:rgba(10,31,68,.97);padding:24px;gap:18px;backdrop-filter:blur(12px)
-  }
-  .about-wrap,.contact-wrap{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .glow-circle{width:260px;height:260px}
-  .glow-circle i{font-size:6rem}
-  section{padding:70px 6%}
-}
-</style>
+    /* Particle Canvas */
+    #particleCanvas {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: 0;
+    }
+
+    /* DNA Helix */
+    .dna-container {
+      position: absolute; right: 6%; top: 50%;
+      transform: translateY(-50%);
+      width: 160px; height: 500px;
+      z-index: 1;
+    }
+
+    .dna-strand {
+      position: relative; width: 100%; height: 100%;
+      animation: dnaRotate 6s linear infinite;
+    }
+
+    @keyframes dnaRotate {
+      0%   { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    .dna-pair {
+      position: absolute; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .dna-node {
+      width: 14px; height: 14px; border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    .dna-node.left  { background: var(--cyan); }
+    .dna-node.right { background: var(--teal); }
+
+    .dna-bridge {
+      flex: 1; height: 2px;
+      background: linear-gradient(to right, var(--cyan), var(--teal));
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,201,255,0.1);
+      border: 1px solid var(--border);
+      padding: 6px 18px; border-radius: 30px;
+      font-size: 0.8rem; color: var(--cyan);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .hero-badge span { width: 8px; height: 8px; background: var(--neon);
+      border-radius: 50%; animation: pulse 1.5s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,0.6); }
+      50%       { box-shadow: 0 0 0 8px rgba(57,255,20,0); }
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      margin-bottom: 16px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero-title .glow {
+      color: var(--cyan);
+      text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem; color: rgba(240,248,255,0.7);
+      line-height: 1.7; margin-bottom: 36px;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero-buttons {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--teal));
+      color: var(--dark); padding: 14px 32px; border-radius: 50px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      box-shadow: 0 0 24px rgba(0,201,255,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(0,201,255,0.8);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--cyan); color: var(--cyan);
+      padding: 14px 32px; border-radius: 50px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: all 0.3s;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,201,255,0.1);
+      box-shadow: 0 0 20px rgba(0,201,255,0.3);
+    }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 30px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px; color: rgba(240,248,255,0.4); font-size: 0.75rem;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION COMMON
+    ══════════════════════════════════════ */
+    section { padding: 90px 40px; }
+
+    .section-tag {
+      display: inline-block;
+      background: rgba(0,201,255,0.1);
+      border: 1px solid var(--border);
+      color: var(--cyan); font-size: 0.78rem;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 12px; letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800; margin-bottom: 14px;
+    }
+
+    .section-title span { color: var(--cyan); }
+
+    .section-sub {
+      color: rgba(240,248,255,0.6);
+      font-size: 1rem; line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════
+       WHY CHOOSE US
+    ══════════════════════════════════════ */
+    #why { background: linear-gradient(180deg, var(--dark) 0%, #020c1b 100%); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px; margin-top: 50px;
+    }
+
+    .why-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      cursor: default;
+      backdrop-filter: blur(10px);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .why-card:hover {
+      box-shadow: 0 0 36px rgba(0,201,255,0.25);
+      border-color: var(--cyan);
+    }
+
+    .why-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,201,255,0.2), rgba(0,245,196,0.2));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--cyan);
+      margin: 0 auto 20px;
+      box-shadow: 0 0 20px rgba(0,201,255,0.2);
+      transition: box-shadow 0.3s;
+    }
+
+    .why-card:hover .why-icon {
+      box-shadow: 0 0 30px rgba(0,201,255,0.5);
+    }
+
+    .why-card h3 {
+      font-size: 1rem; font-weight: 700;
+      margin-bottom: 10px; color: var(--white);
+    }
+
+    .why-card p { font-size: 0.88rem; color: rgba(240,248,255,0.6); line-height: 1.6; }
+
+    /* ══════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════ */
+    #services { background: #020c1b; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px; margin-top: 50px;
+    }
+
+    .service-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px 28px;
+      position: relative; overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: ''; position: absolute;
+      top: -60%; left: -60%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(0,201,255,0.06) 0%, transparent 60%);
+      transition: opacity 0.4s;
+      opacity: 0;
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,201,255,0.2);
+      border-color: var(--cyan);
+    }
+
+    .service-num {
+      position: absolute; top: 20px; right: 24px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem; font-weight: 900;
+      color: rgba(0,201,255,0.07);
+    }
+
+    .service-icon {
+      font-size: 2rem; color: var(--cyan);
+      margin-bottom: 18px;
+      text-shadow: 0 0 14px var(--cyan);
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-card p { font-size: 0.87rem; color: rgba(240,248,255,0.6); line-height: 1.6; }
+
+    .service-badge {
+      display: inline-block; margin-top: 16px;
+      background: rgba(57,255,20,0.1);
+      border: 1px solid rgba(57,255,20,0.3);
+      color: var(--neon); font-size: 0.75rem;
+      padding: 4px 12px; border-radius: 20px;
+    }
+
+    /* ══════════════════════════════════════
+       STATS
+    ══════════════════════════════════════ */
+    #stats {
+      background: linear-gradient(135deg, #001d3d, #000814);
+      position: relative; overflow: hidden;
+    }
+
+    #stats::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,201,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,201,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px; position: relative; z-index: 1;
+    }
+
+    .stat-box { text-align: center; }
+
+    .stat-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--cyan);
+      text-shadow: 0 0 20px var(--cyan);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem; color: rgba(240,248,255,0.6);
+      margin-top: 6px; display: block;
+    }
+
+    /* ══════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════ */
+    #about { background: var(--dark); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      margin-top: 20px;
+    }
+
+    .about-text p {
+      color: rgba(240,248,255,0.7);
+      line-height: 1.8; margin-bottom: 16px; font-size: 0.97rem;
+    }
+
+    .trust-badges {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;
+    }
+
+    .badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(57,255,20,0.08);
+      border: 1px solid rgba(57,255,20,0.25);
+      padding: 8px 18px; border-radius: 30px;
+      font-size: 0.85rem; color: var(--neon);
+    }
+
+    .about-visual {
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .glow-circle {
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,201,255,0.15) 0%, transparent 70%);
+      border: 2px solid rgba(0,201,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,201,255,0.2), inset 0 0 60px rgba(0,201,255,0.05);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(0,201,255,0.2), inset 0 0 40px rgba(0,201,255,0.05); }
+      50%       { box-shadow: 0 0 80px rgba(0,201,255,0.4), inset 0 0 80px rgba(0,201,255,0.1); }
+    }
+
+    .glow-circle-inner {
+      text-align: center;
+    }
+
+    .glow-circle-inner i {
+      font-size: 5rem; color: var(--cyan);
+      text-shadow: 0 0 30px var(--cyan);
+      display: block; margin-bottom: 12px;
+    }
+
+    .glow-circle-inner span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem; color: var(--cyan);
+      letter-spacing: 2px;
+    }
+
+    .orbit {
+      position: absolute; border-radius: 50%;
+      border: 1px dashed rgba(0,201,255,0.2);
+    }
+
+    .orbit-1 { width: 380px; height: 380px; animation: spin 12s linear infinite; }
+    .orbit-2 { width: 440px; height: 440px; animation: spin 18s linear infinite reverse; }
+
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .orbit-dot {
+      position: absolute; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+      top: -5px; left: 50%; transform: translateX(-50%);
+    }
+
+    /* ══════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════ */
+    #contact { background: #020c1b; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px; margin-top: 50px; align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 22px; }
+
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 18px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 20px 24px; border-radius: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px rgba(0,201,255,0.15);
+    }
+
+    .contact-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0,201,255,0.2), rgba(0,245,196,0.2));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .contact-item h4 { font-size: 0.8rem; color: var(--cyan); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-item p, .contact-item a { font-size: 0.95rem; color: var(--white); text-decoration: none; }
+    .contact-item a:hover { color: var(--cyan); }
+
+    .map-wrap {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 30px rgba(0,201,255,0.1);
+      height: 100%;
+      min-height: 380px;
+    }
+
+    .map-wrap iframe {
+      width: 100%; height: 100%; min-height: 380px;
+      border: none; filter: invert(90%) hue-rotate(180deg);
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: #000510;
+      border-top: 1px solid var(--border);
+      padding: 50px 40px 30px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem; color: rgba(240,248,255,0.5);
+      line-height: 1.7; margin-top: 14px; max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem; color: var(--cyan);
+      margin-bottom: 16px; letter-spacing: 1px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(240,248,255,0.55); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+    .footer-col ul a:hover { color: var(--cyan); }
+
+    .social-links { display: flex; gap: 12px; margin-top: 20px; }
+
+    .social-link {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--glass); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1rem; text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(0,201,255,0.2); border-color: var(--cyan);
+      color: var(--cyan); box-shadow: 0 0 14px rgba(0,201,255,0.3);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-bottom p { font-size: 0.82rem; color: rgba(240,248,255,0.35); }
+    .footer-bottom span { color: var(--cyan); }
+
+    /* ══════════════════════════════════════
+       FLOATING WHATSAPP
+    ══════════════════════════════════════ */
+    .wa-float {
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: #fff; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      animation: waPulse 2s infinite;
+    }
+
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50%       { box-shadow: 0 4px 40px rgba(37,211,102,0.9), 0 0 0 12px rgba(37,211,102,0.1); }
+    }
+
+    /* ══════════════════════════════════════
+       FADE-IN KEYFRAME
+    ══════════════════════════════════════ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      section { padding: 70px 20px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .dna-container { display: none; }
+      .glow-circle, .orbit-1, .orbit-2 { width: 260px; height: 260px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; }
+      .hero-title { font-size: 1.8rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="logo"><i class="fa-solid fa-dna"></i> Jayas Pathology</div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home">Home</a></li>
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <i class="fas fa-microscope"></i> Jayas Pathology
+  </a>
+  <ul class="nav-links">
     <li><a href="#why">Why Us</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-cta">
-    <span class="phone-num"><i class="fa-solid fa-phone" style="color:var(--accent)"></i> +91 63989 42149</span>
-    <a href="tel:+916398942149" class="btn btn-primary"><i class="fa-solid fa-phone-volume"></i> Call Now</a>
-    <i class="fa-solid fa-bars menu-toggle" id="menuToggle"></i>
-  </div>
+  <a href="tel:+916398942149" class="nav-cta">
+    <i class="fas fa-phone"></i> Call Now
+  </a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="dna-wrap"><div class="dna" id="dna"></div></div>
-  <div class="particles" id="particles"></div>
-  <div class="float-icons">
-    <i class="fa-solid fa-microscope" style="top:18%;left:8%"></i>
-    <i class="fa-solid fa-vial" style="top:30%;right:10%;animation-delay:1s"></i>
-    <i class="fa-solid fa-heart-pulse" style="bottom:20%;left:12%;animation-delay:2s"></i>
-    <i class="fa-solid fa-stethoscope" style="bottom:28%;right:14%;animation-delay:1.5s"></i>
-    <i class="fa-solid fa-syringe" style="top:55%;left:5%;animation-delay:.6s"></i>
-  </div>
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- DNA Helix -->
+  <div class="dna-container" id="dna"></div>
+
   <div class="hero-content">
-    <h1>Jayas Pathology</h1>
-    <p class="tagline">Precision Diagnostics. Trusted Results. Delivered to You.</p>
-    <div class="hero-ctas">
-      <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-flask-vial"></i> Book a Test Today</a>
-      <a href="#services" class="btn btn-outline"><i class="fa-solid fa-list-check"></i> View Services</a>
+    <div class="hero-badge">
+      <span></span> Now Operational · Home Delivery Available
     </div>
+    <h1 class="hero-title">
+      <span class="glow">Jayas</span> Pathology<br/>
+      Precision Diagnostics
+    </h1>
+    <p class="hero-subtitle">
+      Advanced diagnostic services in Karahari, Uttar Pradesh.
+      Trusted results, helpful staff, and convenient home sample collection — all at your fingertips.
+    </p>
+    <div class="hero-buttons">
+      <a href="tel:+916398942149" class="btn-primary">
+        <i class="fas fa-phone-alt"></i> Book a Test
+      </a>
+      <a href="#services" class="btn-outline">
+        <i class="fas fa-flask"></i> View Services
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <i class="fas fa-chevron-down"></i> Scroll
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
+<!-- ══ WHY CHOOSE US ══ -->
 <section id="why">
-  <div class="sec-head reveal">
-    <h2>Why Choose <span>Jayas Pathology</span></h2>
-    <p>A diagnostic experience built on accuracy, accessibility and patient comfort.</p>
+  <div class="center reveal">
+    <span class="section-tag">Why Choose Us</span>
+    <h2 class="section-title">Built for Your <span>Health & Comfort</span></h2>
+    <p class="section-sub">We combine cutting-edge equipment with compassionate care to deliver reliable diagnostic results.</p>
   </div>
-  <div class="grid grid-4">
-    <div class="glass-card tilt reveal">
-      <div class="icon"><i class="fa-solid fa-microscope"></i></div>
+  <div class="why-grid">
+    <div class="why-card reveal" data-delay="0">
+      <div class="why-icon"><i class="fas fa-atom"></i></div>
       <h3>Advanced Equipment</h3>
-      <p>State-of-the-art diagnostic machines ensuring accurate and quick results.</p>
+      <p>State-of-the-art diagnostic instruments ensuring accuracy in every test result.</p>
     </div>
-    <div class="glass-card tilt reveal">
-      <div class="icon"><i class="fa-solid fa-truck-medical"></i></div>
+    <div class="why-card reveal" data-delay="100">
+      <div class="why-icon"><i class="fas fa-truck-medical"></i></div>
       <h3>Home Sample Delivery</h3>
-      <p>Our trained phlebotomists collect samples from the comfort of your home.</p>
+      <p>We come to you — book a test and our team collects your sample at your doorstep.</p>
     </div>
-    <div class="glass-card tilt reveal">
-      <div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+    <div class="why-card reveal" data-delay="200">
+      <div class="why-icon"><i class="fas fa-mobile-alt"></i></div>
       <h3>NFC Mobile Payments</h3>
-      <p>Pay easily with NFC, UPI, or cards — fast, secure and contactless.</p>
+      <p>Tap-to-pay supported. We accept all major NFC-based digital payment methods.</p>
     </div>
-    <div class="glass-card tilt reveal">
-      <div class="icon"><i class="fa-solid fa-wheelchair"></i></div>
+    <div class="why-card reveal" data-delay="300">
+      <div class="why-icon"><i class="fas fa-wheelchair"></i></div>
       <h3>Wheelchair Accessible</h3>
-      <p>Dedicated wheelchair-accessible parking and entrance for all patients.</p>
+      <p>Our facility features a fully accessible parking lot — inclusive for everyone.</p>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ══ SERVICES ══ -->
 <section id="services">
-  <div class="sec-head reveal">
-    <h2>Our <span>Services</span></h2>
-    <p>Comprehensive pathology tests with rapid, reliable reporting.</p>
+  <div class="center reveal">
+    <span class="section-tag">Our Tests</span>
+    <h2 class="section-title">Diagnostic <span>Services</span></h2>
+    <p class="section-sub">A wide range of pathology tests performed with precision and care.</p>
   </div>
-  <div class="grid grid-3">
-    <div class="flip-card reveal"><div class="flip-inner">
-      <div class="flip-face flip-front"><i class="fa-solid fa-droplet"></i><h3>Blood Test</h3></div>
-      <div class="flip-face flip-back"><p>Complete profiling including lipid, liver and kidney function tests with same-day reports.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
-    </div></div>
-    <div class="flip-card reveal"><div class="flip-inner">
-      <div class="flip-face flip-front"><i class="fa-solid fa-vial"></i><h3>Urine Analysis</h3></div>
-      <div class="flip-face flip-back"><p>Detailed urine examination to detect infections, kidney issues and metabolic disorders.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
-    </div></div>
-    <div class="flip-card reveal"><div class="flip-inner">
-      <div class="flip-face flip-front"><i class="fa-solid fa-cubes-stacked"></i><h3>Sugar Test</h3></div>
-      <div class="flip-face flip-back"><p>Fasting, PP and HbA1c sugar tests to monitor diabetes accurately.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
-    </div></div>
-    <div class="flip-card reveal"><div class="flip-inner">
-      <div class="flip-face flip-front"><i class="fa-solid fa-disease"></i><h3>Complete Blood Count</h3></div>
-      <div class="flip-face flip-back"><p>CBC analysis to evaluate overall health and detect a wide range of disorders.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
-    </div></div>
-    <div class="flip-card reveal"><div class="flip-inner">
-      <div class="flip-face flip-front"><i class="fa-solid fa-shield-virus"></i><h3>Thyroid Test</h3></div>
-      <div class="flip-face flip-back"><p>T3, T4 and TSH tests for accurate thyroid function assessment.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
-    </div></div>
-    <div class="flip-card reveal"><div class="flip-inner">
-      <div class="flip-face flip-front"><i class="fa-solid fa-virus-covid"></i><h3>COVID / Viral Tests</h3></div>
-      <div class="flip-face flip-back"><p>Reliable RT-PCR, antigen and viral panel tests with quick turnaround.</p><a href="#contact" class="btn btn-outline">Book Now</a></div>
-    </div></div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <div class="service-icon"><i class="fas fa-tint"></i></div>
+      <h3>Complete Blood Count</h3>
+      <p>Full blood panel to detect anemia, infections, and other blood disorders.</p>
+      <span class="service-badge">✔ Available</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">02</span>
+      <div class="service-icon"><i class="fas fa-vial"></i></div>
+      <h3>Urine Analysis</h3>
+      <p>Comprehensive urinalysis for kidney function, infections, and metabolic conditions.</p>
+      <span class="service-badge">✔ Available</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">03</span>
+      <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+      <h3>Sugar / Diabetes Test</h3>
+      <p>Fasting glucose, HbA1c, and post-meal blood sugar monitoring.</p>
+      <span class="service-badge">✔ Available</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">04</span>
+      <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+      <h3>Thyroid Profile</h3>
+      <p>TSH, T3, T4 tests for complete thyroid gland function assessment.</p>
+      <span class="service-badge">✔ Available</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">05</span>
+      <div class="service-icon"><i class="fas fa-lungs-virus"></i></div>
+      <h3>Viral / COVID Tests</h3>
+      <p>Rapid antigen and RT-PCR testing for viral infections including COVID-19.</p>
+      <span class="service-badge">✔ Available</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">06</span>
+      <div class="service-icon"><i class="fas fa-dna"></i></div>
+      <h3>Lipid Profile</h3>
+      <p>Cholesterol and triglycerides testing for cardiovascular health monitoring.</p>
+      <span class="service-badge">✔ Available</span>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ STATS ══ -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-box reveal">
+      <span class="stat-num" data-target="500">0</span>
+      <span class="stat-label">Tests Completed</span>
+    </div>
+    <div class="stat-box reveal">
+      <span class="stat-num" data-target="10000">0</span>
+      <span class="stat-label">Happy Patients</span>
+    </div>
+    <div class="stat-box reveal">
+      <span class="stat-num" data-target="100">0</span>
+      <span class="stat-label">% Accuracy</span>
+    </div>
+    <div class="stat-box reveal">
+      <span class="stat-num" data-target="20">0</span>
+      <span class="stat-label">Years of Service</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
 <section id="about">
-  <div class="about-wrap">
+  <div class="about-grid">
     <div class="about-text reveal">
-      <h2>About <span>Jayas Pathology</span></h2>
-      <p>Founded by <strong>Rajesh Kumar (Ranu Thakur)</strong>, Jayas Pathology has been the trusted diagnostic partner of families in Surir and nearby villages. We combine advanced lab technology with a warm, helpful team to deliver results you can rely on.</p>
-      <p>Our staff is known across the community for being professional, kind and patient-first. From routine blood work to specialized panels — every report is handled with precision and care.</p>
+      <span class="section-tag">About Us</span>
+      <h2 class="section-title">Trusted <span>Diagnostics</span> in Karahari</h2>
+      <p>Jayas Pathology is a trusted diagnostic centre located in the heart of Karahari village, Uttar Pradesh. We are committed to delivering fast, accurate, and affordable test results to the local community.</p>
+      <p>Under the guidance of <strong>Rajesh Kumar (Ranu Thakur)</strong>, our lab maintains the highest standards of quality and hygiene. Our team is known for being approachable, helpful, and professional.</p>
+      <p>From basic blood tests to comprehensive health panels, we offer a full spectrum of pathological services — with the convenience of home sample collection and NFC digital payments.</p>
       <div class="trust-badges">
-        <span class="badge"><i class="fa-solid fa-circle-check"></i> Certified</span>
-        <span class="badge"><i class="fa-solid fa-shield-halved"></i> Reliable</span>
-        <span class="badge"><i class="fa-solid fa-hand-holding-heart"></i> Affordable</span>
+        <span class="badge"><i class="fas fa-check-circle"></i> Certified Lab</span>
+        <span class="badge"><i class="fas fa-check-circle"></i> Reliable Results</span>
+        <span class="badge"><i class="fas fa-check-circle"></i> Affordable Pricing</span>
       </div>
     </div>
     <div class="about-visual reveal">
-      <div class="glow-circle"><i class="fa-solid fa-user-doctor"></i></div>
+      <div style="position:relative; display:flex; align-items:center; justify-content:center;">
+        <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot" style="background:var(--teal); box-shadow:0 0 10px var(--teal);"></div></div>
+        <div class="glow-circle">
+          <div class="glow-circle-inner">
+            <i class="fas fa-microscope"></i>
+            <span>Jayas Pathology</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
-  <div class="stats-grid">
-    <div class="stat-item reveal"><div class="num" data-target="500">0</div><div class="label">+ Tests Done</div></div>
-    <div class="stat-item reveal"><div class="num" data-target="1000">0</div><div class="label">+ Happy Patients</div></div>
-    <div class="stat-item reveal"><div class="num" data-target="100">0</div><div class="label">% Accuracy</div></div>
-    <div class="stat-item reveal"><div class="num" data-target="5">0</div><div class="label">+ Years of Trust</div></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
-  <div class="sec-head reveal">
-    <h2>Visit or <span>Contact Us</span></h2>
-    <p>We're here to help — drop by, call, or book a home collection.</p>
+  <div class="center reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Visit or <span>Contact Us</span></h2>
+    <p class="section-sub">We are located in Karahari, UP. Walk in or call to book your test today.</p>
   </div>
-  <div class="contact-wrap">
-    <div class="contact-info">
-      <div class="info-item reveal"><i class="fa-solid fa-location-dot"></i>
-        <div><h4>Address</h4><p>04 Main Bajar Surir, Vill. Karahari, Uttar Pradesh 281202, India</p></div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <h4>Address</h4>
+          <p>04 Main Bajar Surir, Vill, Karahari,<br/>Uttar Pradesh 281202, India</p>
+        </div>
       </div>
-      <div class="info-item reveal"><i class="fa-solid fa-phone"></i>
-        <div><h4>Phone</h4><a href="tel:+916398942149">+91 63989 42149</a></div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:+916398942149">+91 63989 42149</a>
+        </div>
       </div>
-      <div class="info-item reveal"><i class="fa-solid fa-clock"></i>
-        <div><h4>Working Hours</h4><p>Mon – Sun: 7:00 AM – 9:00 PM</p></div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <h4>Working Hours</h4>
+          <p>Mon–Sat: 7:00 AM – 8:00 PM<br/>Sunday: 8:00 AM – 2:00 PM</p>
+        </div>
       </div>
-      <div class="info-item reveal"><i class="fa-solid fa-credit-card"></i>
-        <div><h4>Payments</h4><p>Cash, UPI, Cards, NFC Mobile Payments</p></div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-credit-card"></i></div>
+        <div>
+          <h4>Payment Methods</h4>
+          <p>Cash · NFC Mobile Payments · UPI</p>
+        </div>
       </div>
-      <a href="https://maps.app.goo.gl/c2abeFuUuKbC7svh9" target="_blank" rel="noopener" class="btn btn-primary reveal" style="align-self:flex-start"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+      <a href="https://maps.app.goo.gl/c2abeFuUuKbC7svh9" target="_blank" class="btn-primary" style="align-self:flex-start;">
+        <i class="fas fa-directions"></i> Get Directions
+      </a>
     </div>
     <div class="map-wrap reveal">
-      <iframe src="https://www.google.com/maps?q=Surir+Karahari+Uttar+Pradesh+281202&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.1234!2d77.6543!3d27.3456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDIwJzQ0LjIiTiA3N8KwMzknMTUuNSJF!5e0!3m2!1sen!2sin!4v1234567890"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-grid">
-    <div>
-      <div class="logo" style="margin-bottom:14px"><i class="fa-solid fa-dna"></i> Jayas Pathology</div>
-      <p>Precision diagnostics with a human touch — serving Surir and surrounding regions with reliable, affordable pathology services.</p>
-      <div class="socials">
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://wa.me/916398942149" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo" style="font-size:1.1rem;">
+        <i class="fas fa-microscope"></i> Jayas Pathology
+      </a>
+      <p>Precision diagnostics for the Karahari community. Trusted, affordable, and always here for your health.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/916398942149" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
-    <div>
-      <h4>Contact</h4>
-      <p><i class="fa-solid fa-phone" style="color:var(--accent)"></i> +91 63989 42149</p>
-      <p><i class="fa-solid fa-location-dot" style="color:var(--accent)"></i> Surir, Karahari, UP 281202</p>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Blood Tests</a></li>
+        <li><a href="#">Urine Analysis</a></li>
+        <li><a href="#">Sugar Tests</a></li>
+        <li><a href="#">Thyroid Profile</a></li>
+        <li><a href="#">Lipid Profile</a></li>
+      </ul>
     </div>
   </div>
-  <div class="copyright">© 2025 Jayas Pathology. All Rights Reserved. | Owner: Rajesh Kumar (Ranu Thakur)</div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>Jayas Pathology</span>. All Rights Reserved.</p>
+    <p>Owner: <span>Rajesh Kumar (Ranu Thakur)</span> · Karahari, UP</p>
+  </div>
 </footer>
 
-<a href="https://wa.me/916398942149" class="wa-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/916398942149" class="wa-float" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
 <script>
-/* DNA helix build */
-const dna = document.getElementById('dna');
-const rungs = 20;
-for(let i=0;i<rungs;i++){
-  const r = document.createElement('div');
-  r.className='rung';
-  r.style.top = (i*(500/rungs))+'px';
-  r.style.transform = `translateX(-50%) rotateY(${i*36}deg)`;
-  dna.appendChild(r);
+/* ── 1. PARTICLE CANVAS ── */
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 2.5 + 0.5;
+    this.sx = (Math.random() - 0.5) * 0.4;
+    this.sy = (Math.random() - 0.5) * 0.4;
+    this.alpha = Math.random() * 0.5 + 0.1;
+  }
+  update() {
+    this.x += this.sx; this.y += this.sy;
+    if (this.x < 0 || this.x > canvas.width ||
+        this.y < 0 || this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,201,255,${this.alpha})`;
+    ctx.fill();
+  }
 }
 
-/* Particles */
-const pBox = document.getElementById('particles');
-for(let i=0;i<35;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.animationDuration=(8+Math.random()*10)+'s';
-  p.style.animationDelay=(-Math.random()*10)+'s';
-  const s=3+Math.random()*5;
-  p.style.width=s+'px';p.style.height=s+'px';
-  p.style.opacity=.3+Math.random()*.6;
-  pBox.appendChild(p);
+for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* ── 2. DNA HELIX ── */
+const dnaContainer = document.getElementById('dna');
+const pairCount = 18;
+for (let i = 0; i < pairCount; i++) {
+  const pair = document.createElement('div');
+  pair.className = 'dna-pair';
+  const top = (i / pairCount) * 100;
+  const angle = (i / pairCount) * 360;
+  const scaleX = Math.cos((angle * Math.PI) / 180);
+  pair.style.cssText = `top:${top}%; transform:scaleX(${scaleX.toFixed(3)});`;
+  const nL = document.createElement('div');
+  nL.className = 'dna-node left';
+  const br = document.createElement('div');
+  br.className = 'dna-bridge';
+  const nR = document.createElement('div');
+  nR.className = 'dna-node right';
+  pair.appendChild(nL); pair.appendChild(br); pair.appendChild(nR);
+  dnaContainer.appendChild(pair);
 }
 
-/* Mobile menu */
-document.getElementById('menuToggle').addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.remove('open');
-}));
-
-/* 3D Tilt */
-document.querySelectorAll('.tilt').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateZ(6px)`;
+/* Animate DNA continuously */
+let dnaAngle = 0;
+function animateDNA() {
+  dnaAngle += 1;
+  const pairs = dnaContainer.querySelectorAll('.dna-pair');
+  pairs.forEach((pair, i) => {
+    const angle = ((i / pairCount) * 360 + dnaAngle) % 360;
+    const scaleX = Math.cos((angle * Math.PI) / 180);
+    pair.style.transform = `scaleX(${scaleX.toFixed(3)})`;
+    const opacity = (scaleX + 1) / 2;
+    pair.style.opacity = (opacity * 0.8 + 0.2).toFixed(2);
   });
-  card.addEventListener('mouseleave',()=>card.style.transform='');
-});
+  requestAnimationFrame(animateDNA);
+}
+animateDNA();
 
-/* Scroll reveal */
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'), i*60);
-      io.unobserve(e.target);
+/* ── 3. SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => entry.target.classList.add('visible'), parseInt(delay));
+      observer.unobserve(entry.target);
     }
   });
-},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}, { threshold: 0.15 });
 
-/* Counters */
-const counters=document.querySelectorAll('.num');
-const cio=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{
-    if(en.isIntersecting){
-      const el=en.target;
-      const target=+el.dataset.target;
-      const dur=1800; const start=performance.now();
-      const tick=(t)=>{
-        const p=Math.min((t-start)/dur,1);
-        el.textContent=Math.floor(p*target);
-        if(p<1)requestAnimationFrame(tick); else el.textContent=target;
-      };
-      requestAnimationFrame(tick);
-      cio.unobserve(el);
+revealEls.forEach(el => observer.observe(el));
+
+/* ── 4. COUNTER ANIMATION ── */
+const counters = document.querySelectorAll('.stat-num[data-target]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = target === 100 ? '%' : (target >= 1000 ? '+' : '+');
+      let current = 0;
+      const step = Math.ceil(target / 60);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + suffix;
+        if (current >= target) clearInterval(timer);
+      }, 25);
+      counterObserver.unobserve(el);
     }
   });
-},{threshold:.5});
-counters.forEach(c=>cio.observe(c));
+}, { threshold: 0.5 });
+
+counters.forEach(c => counterObserver.observe(c));
+
+/* ── 5. 3D CARD TILT ── */
+document.querySelectorAll('.why-card, .service-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width  / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    card.style.transform = `perspective(800px) rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg) translateZ(10px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateY(0) rotateX(0) translateZ(0)';
+  });
+});
 </script>
 </body>
 </html>
